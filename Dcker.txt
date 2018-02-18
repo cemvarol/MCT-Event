@@ -1,0 +1,41 @@
+PS C:\Windows\system32> dockerd.exe --register-service
+PS C:\Windows\system32> Start-Service docker
+PS C:\Windows\system32> docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+PS C:\Windows\system32> docker load -i "c:\images\hayta.tar"
+f358be10862c: Loading layer [==================================================>]  7.892GB/7.892GB
+3543301c85cf: Loading layer [==================================================>]  2.636GB/2.636GB
+591455288d2b: Loading layer [==================================================>]  302.9MB/302.9MB
+357bccc34a53: Loading layer [==================================================>]  182.8kB/182.8kB
+ce15af77227d: Loading layer [==================================================>]  54.27kB/54.27kB
+780cc29d7c04: Loading layer [==================================================>]  54.27kB/54.27kB
+7ad8c75e0a1a: Loading layer [==================================================>]  76.86MB/76.86MB
+Loaded image: cemo/hayta:v3
+PS C:\Windows\system32>
+PS C:\Windows\system32>
+PS C:\Windows\system32>
+PS C:\Windows\system32>
+PS C:\Windows\system32> docker load -i "c:\images\hayta4.tar"
+open c:\images\hayta4.tar: The system cannot find the file specified.
+PS C:\Windows\system32> docker load -i "c:\images\haytav4.tar"
+2dd964cd6297: Loading layer [==================================================>]  67.73MB/67.73MB
+Loaded image: cemo/hayta:v4
+
+
+docker run -d -p 80:80 --name Hayta cemo/hayta:v3
+docker run -d -p 80:81 --name Hayta5 cemo/hayta:v4
+
+C:\Windows\system32>docker ps
+CONTAINER ID        IMAGE               COMMAND                   CREATED             STATUS              PORTS                NAMES
+8e0b94d7b33a        cemo/hayta:v4       "C:\\ServiceMonitor..."   2 hours ago         Up 2 hours          0.0.0.0:81->80/tcp   Hayta5
+9e8c7ad71a86        cemo/hayta:v3       "C:\\ServiceMonitor..."   3 hours ago         Up 3 hours          0.0.0.0:80->80/tcp   Hayta
+
+
+echo "<html><body><h1>80 I am on port 80 </h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+echo "<html><body><h1>81 I am on port 81 but published from 80</h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+
+docker exec -it Hayta5 powershell
+
+
+
+echo "<html><body><h1>HEY THERE LOS POTATOS</h1></body></html>" > "c:\inetpub\wwwroot\index.html"

@@ -1,0 +1,7 @@
+https://blogs.msdn.microsoft.com/containerstuff/2017/02/14/manage-iis-on-a-container-with-the-iis-admin-console/
+
+
+https://www.google.co.in/search?q=connect+to+existing+iis+containers+with+iis+management+tools&oq=connect+to+existing+iis+containers+with+iis+management+tools&aqs=chrome..69i57.13033j1j7&sourceid=chrome&ie=UTF-8
+
+
+http://computeinfo.azurewebsites.net
